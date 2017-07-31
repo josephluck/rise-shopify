@@ -1,0 +1,9 @@
+development:
+  password: "password"
+  theme_id: "185852166"
+  store: rise-dev.myshopify.com
+
+development:
+  password: "password"
+  theme_id: "176467657"
+  store: rise-bakery.myshopify.com
