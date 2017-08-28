@@ -46,7 +46,7 @@ locales/pt-PT.json:
 sections/article-template.liquid:
   development: 2017-07-31T03:44:16-04:00   6850937aeb295fae74ca4dec2a6922bb
 sections/blog-template.liquid:
-  development: 2017-07-31T03:44:16-04:00   5757170836346c1082ffba4ef408857e
+  development: 2017-08-28T12:42:34-04:00   5757170836346c1082ffba4ef408857e
 sections/cart-template.liquid:
   development: 2017-07-31T03:44:16-04:00   f07185af88ed866aaf60d6567f794269
 sections/collection-list.liquid:
@@ -91,6 +91,8 @@ sections/product-template.liquid:
   development: 2017-07-31T03:44:16-04:00   af76dab7f716f8f212581eb9e25bad4a
 sections/quotes.liquid:
   development: 2017-07-31T03:48:43-04:00   b234ffff9a061befe87a0d69a121af1c
+sections/related-articles.liquid:
+  development: 2017-08-28T12:51:32-04:00   0995454f3a657e89893f100e8d5ec223
 sections/slideshow.liquid:
   development: 2017-07-31T03:44:16-04:00   b45e3880ca33f6ac6de7c2b5eb9dd40b
 snippets/bgset.liquid:
@@ -216,13 +218,13 @@ snippets/site-nav.liquid:
 snippets/social-meta-tags.liquid:
   development: 2017-07-31T03:44:18-04:00   af4fb21aab8094078da2ff27c8766ad5
 snippets/social-sharing.liquid:
-  development: 2017-07-31T03:44:18-04:00   df66127392b32e401ac2dd2963c78047
+  development: 2017-08-28T12:49:37-04:00   399c2f91f5de1517513737fed9ac13ad
 templates/404.liquid:
   development: 2017-07-31T03:44:18-04:00   805b16263cdf5c85be9c507ad6b03623
 templates/article.liquid:
-  development: 2017-07-31T03:44:18-04:00   ee81292ccbf409a609d95a6d1a89d94f
+  development: 2017-08-28T12:51:31-04:00   0a75b97949cd5f6405d065fa5e0f7ca6
 templates/blog.liquid:
-  development: 2017-07-31T03:44:19-04:00   2d9763b480fe6879080163b1e0e33e54
+  development: 2017-08-28T12:42:33-04:00   2d9763b480fe6879080163b1e0e33e54
 templates/cart.liquid:
   development: 2017-07-31T03:44:19-04:00   714b4b7c62d583b231f339bbd1b85d03
 templates/collection.liquid:
@@ -248,7 +250,7 @@ templates/index.liquid:
 templates/list-collections.liquid:
   development: 2017-07-31T03:44:19-04:00   d42f6d6957169811896f646709d353d9
 templates/page.contact.liquid:
-  development: 2017-08-28T11:03:23-04:00   efc85e946d2acecf4b7ad3c78459ad8c
+  development: 2017-08-28T12:30:55-04:00   228f3a6c567a10dee7284158401d29c0
 templates/page.liquid:
   development: 2017-07-31T03:44:19-04:00   26f97d3355078de5c6678ed3b34ad7f6
 templates/password.liquid:
