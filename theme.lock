@@ -14,9 +14,9 @@ assets/match-media.min.js:
 assets/password.js:
   development: 2017-07-31T03:44:17-04:00   c6b4c16234704306bbb6129d04d7e78e
 assets/theme.js:
-  development: 2017-07-31T03:44:17-04:00   a12ebd85b6236e1b13de6a7faa7e5b04
+  development: 2017-08-28T12:26:58-04:00   a374d5c8a889b363199a1d4961168182
 assets/theme.scss.liquid:
-  development: 2017-08-28T11:09:02-04:00   000d081ee2c5bfcb32bf4ed9fb87f96a
+  development: 2017-08-28T12:27:07-04:00   ab00a0eaec8e0e12b4d588d964ec04d0
 assets/vendor.js:
   development: 2017-07-31T03:44:17-04:00   cb7c4217c9b6feb844647b361accfe6c
 config/settings_data.json:
@@ -32,7 +32,7 @@ layout/theme.liquid:
 locales/de.json:
   development: 2017-07-31T03:49:16-04:00   2c6d11f22c36699a3e2790b06421f09c
 locales/en.default.json:
-  development: 2017-08-28T11:04:26-04:00   6d89786cee86d7f4792d096e824d9f91
+  development: 2017-08-28T12:01:22-04:00   9452d2f364d20b9e50f60e89661b68b6
 locales/es.json:
   development: 2017-07-31T03:48:39-04:00   f8c7cf96510e016abb884375f4286f99
 locales/fr.json:
@@ -66,9 +66,9 @@ sections/featured-blog.liquid:
 sections/featured-product.liquid:
   development: 2017-07-31T03:44:16-04:00   9c2cd13b0e7e12c4468426c6119eb30e
 sections/footer.liquid:
-  development: 2017-08-28T10:19:48-04:00   0d35acad4f6250af01db501a8df88cdd
+  development: 2017-08-28T12:01:47-04:00   4c5e7f4a8f4107b45a02f80afb63218a
 sections/header.liquid:
-  development: 2017-07-31T03:44:16-04:00   9918fb41598b027fbf3d98e8b00fda62
+  development: 2017-08-28T12:26:10-04:00   eaba858381e774bf1cc66f2080b92cc4
 sections/hero.liquid:
   development: 2017-07-31T03:44:16-04:00   d45cf37312b64d6e7511bdba56256758
 sections/image-bar.liquid:
@@ -234,7 +234,7 @@ templates/customers/activate_account.liquid:
 templates/customers/addresses.liquid:
   development: 2017-07-31T03:44:19-04:00   f430f4d7180c00a1e2c058124c26c0e9
 templates/customers/login.liquid:
-  development: 2017-07-31T03:44:19-04:00   28ed5c6acf621c8b4523bbc178f97955
+  development: 2017-08-28T12:00:39-04:00   88e8ea23fe69b3d978e4c749f6db2799
 templates/customers/order.liquid:
   development: 2017-07-31T03:44:19-04:00   e6fc7179a5a3904781b3847d8ef8c0f7
 templates/customers/register.liquid:

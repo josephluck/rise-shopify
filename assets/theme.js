@@ -17,7 +17,7 @@ theme.Sections = function Sections() {
 };
 
 theme.Sections.prototype = _.assignIn({}, theme.Sections.prototype, {
-  _createInstance: function(container, constructor) {
+  _createInstance: function (container, constructor) {
     var $container = $(container);
     var id = $container.attr('data-section-id');
     var type = $container.attr('data-section-type');
@@ -37,15 +37,15 @@ theme.Sections.prototype = _.assignIn({}, theme.Sections.prototype, {
     this.instances.push(instance);
   },
 
-  _onSectionLoad: function(evt) {
+  _onSectionLoad: function (evt) {
     var container = $('[data-section-id]', evt.target)[0];
     if (container) {
       this._createInstance(container);
     }
   },
 
-  _onSectionUnload: function(evt) {
-    this.instances = _.filter(this.instances, function(instance) {
+  _onSectionUnload: function (evt) {
+    this.instances = _.filter(this.instances, function (instance) {
       var isEventInstance = (instance.id === evt.detail.sectionId);
 
       if (isEventInstance) {
@@ -58,9 +58,9 @@ theme.Sections.prototype = _.assignIn({}, theme.Sections.prototype, {
     });
   },
 
-  _onSelect: function(evt) {
+  _onSelect: function (evt) {
     // eslint-disable-next-line no-shadow
-    var instance = _.find(this.instances, function(instance) {
+    var instance = _.find(this.instances, function (instance) {
       return instance.id === evt.detail.sectionId;
     });
 
@@ -69,9 +69,9 @@ theme.Sections.prototype = _.assignIn({}, theme.Sections.prototype, {
     }
   },
 
-  _onDeselect: function(evt) {
+  _onDeselect: function (evt) {
     // eslint-disable-next-line no-shadow
-    var instance = _.find(this.instances, function(instance) {
+    var instance = _.find(this.instances, function (instance) {
       return instance.id === evt.detail.sectionId;
     });
 
@@ -80,9 +80,9 @@ theme.Sections.prototype = _.assignIn({}, theme.Sections.prototype, {
     }
   },
 
-  _onBlockSelect: function(evt) {
+  _onBlockSelect: function (evt) {
     // eslint-disable-next-line no-shadow
-    var instance = _.find(this.instances, function(instance) {
+    var instance = _.find(this.instances, function (instance) {
       return instance.id === evt.detail.sectionId;
     });
 
@@ -91,9 +91,9 @@ theme.Sections.prototype = _.assignIn({}, theme.Sections.prototype, {
     }
   },
 
-  _onBlockDeselect: function(evt) {
+  _onBlockDeselect: function (evt) {
     // eslint-disable-next-line no-shadow
-    var instance = _.find(this.instances, function(instance) {
+    var instance = _.find(this.instances, function (instance) {
       return instance.id === evt.detail.sectionId;
     });
 
@@ -102,10 +102,10 @@ theme.Sections.prototype = _.assignIn({}, theme.Sections.prototype, {
     }
   },
 
-  register: function(type, constructor) {
+  register: function (type, constructor) {
     this.constructors[type] = constructor;
 
-    $('[data-section-type=' + type + ']').each(function(index, container) {
+    $('[data-section-type=' + type + ']').each(function (index, container) {
       this._createInstance(container, constructor);
     }.bind(this));
   }
@@ -122,20 +122,20 @@ window.slate = window.slate || {};
  */
 
 slate.rte = {
-  wrapTable: function() {
+  wrapTable: function () {
     $('.rte table').wrap('<div class="rte__table-wrapper"></div>');
   },
 
-  iframeReset: function() {
+  iframeReset: function () {
     var $iframeVideo = $('.rte iframe[src*="youtube.com/embed"], .rte iframe[src*="player.vimeo"]');
     var $iframeReset = $iframeVideo.add('.rte iframe#admin_bar_iframe');
 
-    $iframeVideo.each(function() {
+    $iframeVideo.each(function () {
       // Add wrapper to make video responsive
       $(this).wrap('<div class="video-wrapper"></div>');
     });
 
-    $iframeReset.each(function() {
+    $iframeReset.each(function () {
       // Re-set the src attribute on each iframe after page load
       // for Chrome's "incorrect iFrame content on 'back'" bug.
       // https://code.google.com/p/chromium/issues/detail?id=395791
@@ -166,7 +166,7 @@ slate.a11y = {
    *
    * @param {JQuery} $element - The element to be acted upon
    */
-  pageLinkFocus: function($element) {
+  pageLinkFocus: function ($element) {
     var focusClass = 'js-focus-hidden';
 
     $element.first()
@@ -185,7 +185,7 @@ slate.a11y = {
   /**
    * If there's a hash in the url, focus the appropriate element
    */
-  focusHash: function() {
+  focusHash: function () {
     var hash = window.location.hash;
 
     // is there a hash in the url? is it an element on the page?
@@ -197,8 +197,8 @@ slate.a11y = {
   /**
    * When an in-page (url w/hash) link is clicked, focus the appropriate element
    */
-  bindInPageLinks: function() {
-    $('a[href*=#]').on('click', function(evt) {
+  bindInPageLinks: function () {
+    $('a[href*=#]').on('click', function (evt) {
       this.pageLinkFocus($(evt.currentTarget.hash));
     }.bind(this));
   },
@@ -211,7 +211,7 @@ slate.a11y = {
    * @param {jQuery} options.$elementToFocus - Element to be focused when focus leaves container
    * @param {string} options.namespace - Namespace used for new focus event handler
    */
-  trapFocus: function(options) {
+  trapFocus: function (options) {
     var eventName = options.namespace
       ? 'focusin.' + options.namespace
       : 'focusin';
@@ -225,7 +225,7 @@ slate.a11y = {
 
     $(document).off('focusin');
 
-    $(document).on(eventName, function(evt) {
+    $(document).on(eventName, function (evt) {
       if (options.$container[0] !== evt.target && !options.$container.has(evt.target).length) {
         options.$container.focus();
       }
@@ -239,7 +239,7 @@ slate.a11y = {
    * @param {jQuery} options.$container - Container to trap focus within
    * @param {string} options.namespace - Namespace used for new focus event handler
    */
-  removeTrapFocus: function(options) {
+  removeTrapFocus: function (options) {
     var eventName = options.namespace
       ? 'focusin.' + options.namespace
       : 'focusin';
@@ -259,7 +259,7 @@ slate.a11y = {
  *
  */
 
-theme.Images = (function() {
+theme.Images = (function () {
 
   /**
    * Preloads an image in memory and uses the browsers cache to store it until needed.
@@ -382,7 +382,7 @@ theme.Images = (function() {
  *
  */
 
-theme.Currency = (function() {
+theme.Currency = (function () {
   var moneyFormat = '${{amount}}'; // eslint-disable-line camelcase
 
   function formatMoney(cents, format) {
@@ -447,7 +447,7 @@ theme.Currency = (function() {
  * @namespace variants
  */
 
-slate.Variants = (function() {
+slate.Variants = (function () {
 
   /**
    * Variant constructor
@@ -473,8 +473,8 @@ slate.Variants = (function() {
      *
      * @return {array} options - Values of currently selected variants
      */
-    _getCurrentOptions: function() {
-      var currentOptions = _.map($(this.singleOptionSelector, this.$container), function(element) {
+    _getCurrentOptions: function () {
+      var currentOptions = _.map($(this.singleOptionSelector, this.$container), function (element) {
         var $element = $(element);
         var type = $element.attr('type');
         var currentOption = {};
@@ -508,12 +508,12 @@ slate.Variants = (function() {
      * @param  {array} selectedValues - Values of variant inputs
      * @return {object || undefined} found - Variant object from product.variants
      */
-    _getVariantFromOptions: function() {
+    _getVariantFromOptions: function () {
       var selectedValues = this._getCurrentOptions();
       var variants = this.product.variants;
 
-      var found = _.find(variants, function(variant) {
-        return selectedValues.every(function(values) {
+      var found = _.find(variants, function (variant) {
+        return selectedValues.every(function (values) {
           return _.isEqual(variant[values.index], values.value);
         });
       });
@@ -524,7 +524,7 @@ slate.Variants = (function() {
     /**
      * Event handler for when a variant input changes.
      */
-    _onSelectChange: function() {
+    _onSelectChange: function () {
       var variant = this._getVariantFromOptions();
 
       this.$container.trigger({
@@ -553,7 +553,7 @@ slate.Variants = (function() {
      * @param  {object} variant - Currently selected variant
      * @return {event}  variantImageChange
      */
-    _updateImages: function(variant) {
+    _updateImages: function (variant) {
       var variantImage = variant.featured_image || {};
       var currentVariantImage = this.currentVariant.featured_image || {};
 
@@ -573,7 +573,7 @@ slate.Variants = (function() {
      * @param  {object} variant - Currently selected variant
      * @return {event} variantPriceChange
      */
-    _updatePrice: function(variant) {
+    _updatePrice: function (variant) {
       if (variant.price === this.currentVariant.price && variant.compare_at_price === this.currentVariant.compare_at_price) {
         return;
       }
@@ -590,7 +590,7 @@ slate.Variants = (function() {
      * @param  {object} variant - Currently selected variant
      * @return {event} variantSKUChange
      */
-    _updateSKU: function(variant) {
+    _updateSKU: function (variant) {
       if (variant.sku === this.currentVariant.sku) {
         return;
       }
@@ -607,13 +607,13 @@ slate.Variants = (function() {
      * @param  {variant} variant - Currently selected variant
      * @return {k}         [description]
      */
-    _updateHistoryState: function(variant) {
+    _updateHistoryState: function (variant) {
       if (!history.replaceState || !variant) {
         return;
       }
 
       var newurl = window.location.protocol + '//' + window.location.host + window.location.pathname + '?variant=' + variant.id;
-      window.history.replaceState({path: newurl}, '', newurl);
+      window.history.replaceState({ path: newurl }, '', newurl);
     },
 
     /**
@@ -621,7 +621,7 @@ slate.Variants = (function() {
      *
      * @param  {variant} variant - Currently selected variant
      */
-    _updateMasterSelect: function(variant) {
+    _updateMasterSelect: function (variant) {
       $(this.originalSelectorId, this.$container).val(variant.id);
     }
   });
@@ -634,7 +634,7 @@ slate.Variants = (function() {
 /*============================================================================
   Drawer modules
 ==============================================================================*/
-theme.Drawers = (function() {
+theme.Drawers = (function () {
   function Drawer(id, position, options) {
     var defaults = {
       close: '.js-drawer-close',
@@ -661,12 +661,12 @@ theme.Drawers = (function() {
     this.init();
   }
 
-  Drawer.prototype.init = function() {
+  Drawer.prototype.init = function () {
     $(this.config.open).on('click', $.proxy(this.open, this));
     this.$drawer.on('click', this.config.close, $.proxy(this.close, this));
   };
 
-  Drawer.prototype.open = function(evt) {
+  Drawer.prototype.open = function (evt) {
     // Keep track if drawer was opened from a click, or called by another function
     var externalCall = false;
 
@@ -719,7 +719,7 @@ theme.Drawers = (function() {
     return this;
   };
 
-  Drawer.prototype.close = function() {
+  Drawer.prototype.close = function () {
     if (!this.drawerIsOpen) { // don't close a closed drawer
       return;
     }
@@ -743,8 +743,8 @@ theme.Drawers = (function() {
     this.unbindEvents();
   };
 
-  Drawer.prototype.bindEvents = function() {
-    this.nodes.$parent.on('keyup.drawer', $.proxy(function(evt) {
+  Drawer.prototype.bindEvents = function () {
+    this.nodes.$parent.on('keyup.drawer', $.proxy(function (evt) {
       // close on 'esc' keypress
       if (evt.keyCode === 27) {
         this.close();
@@ -755,17 +755,17 @@ theme.Drawers = (function() {
     }, this));
 
     // Lock scrolling on mobile
-    this.nodes.$page.on('touchmove.drawer', function() {
+    this.nodes.$page.on('touchmove.drawer', function () {
       return false;
     });
 
-    this.nodes.$page.on('click.drawer', $.proxy(function() {
+    this.nodes.$page.on('click.drawer', $.proxy(function () {
       this.close();
       return false;
     }, this));
   };
 
-  Drawer.prototype.unbindEvents = function() {
+  Drawer.prototype.unbindEvents = function () {
     this.nodes.$page.off('.drawer');
     this.nodes.$parent.off('.drawer');
   };
@@ -777,7 +777,7 @@ theme.Drawers = (function() {
 /* ================ MODULES ================ */
 window.theme = window.theme || {};
 
-theme.Header = (function() {
+theme.Header = (function () {
   var selectors = {
     body: 'body',
     navigation: '#AccessibleNav',
@@ -798,7 +798,7 @@ theme.Header = (function() {
   function init() {
     cacheSelectors();
 
-    cache.$parents.on('click.siteNav', function(evt) {
+    cache.$parents.on('click.siteNav', function (evt) {
       var $el = $(this);
 
       if (!$el.hasClass(config.activeClass)) {
@@ -811,8 +811,8 @@ theme.Header = (function() {
     });
 
     // check when we're leaving a dropdown and close the active dropdown
-    $(selectors.siteNavChildLink).on('focusout.siteNav', function() {
-      setTimeout(function() {
+    $(selectors.siteNavChildLink).on('focusout.siteNav', function () {
+      setTimeout(function () {
         if ($(document.activeElement).hasClass(config.childLinkClass) || !cache.$activeDropdown.length) {
           return;
         }
@@ -822,13 +822,13 @@ theme.Header = (function() {
     });
 
     // close dropdowns when on top level nav
-    cache.$topLevel.on('focus.siteNav', function() {
+    cache.$topLevel.on('focus.siteNav', function () {
       if (cache.$activeDropdown.length) {
         hideDropdown(cache.$activeDropdown);
       }
     });
 
-    cache.$subMenuLinks.on('click.siteNav', function(evt) {
+    cache.$subMenuLinks.on('click.siteNav', function (evt) {
       // Prevent click on body from firing instead of link
       evt.stopImmediatePropagation();
     });
@@ -857,14 +857,14 @@ theme.Header = (function() {
     // set expanded on open dropdown
     $el.find(selectors.siteNavLinkMain).attr('aria-expanded', 'true');
 
-    setTimeout(function() {
-      $(window).on('keyup.siteNav', function(evt) {
+    setTimeout(function () {
+      $(window).on('keyup.siteNav', function (evt) {
         if (evt.keyCode === 27) {
           hideDropdown($el);
         }
       });
 
-      $(selectors.body).on('click.siteNav', function() {
+      $(selectors.body).on('click.siteNav', function () {
         hideDropdown($el);
       });
     }, 250);
@@ -899,7 +899,7 @@ theme.Header = (function() {
 
 window.theme = window.theme || {};
 
-theme.MobileNav = (function() {
+theme.MobileNav = (function () {
   var classes = {
     mobileNavOpenIcon: 'mobile-nav--open',
     mobileNavCloseIcon: 'mobile-nav--close',
@@ -928,7 +928,7 @@ theme.MobileNav = (function() {
 
     // Close mobile nav when unmatching mobile breakpoint
     enquire.register(mediaQuerySmall, {
-      unmatch: function() {
+      unmatch: function () {
         closeMobileNav();
       }
     });
@@ -977,7 +977,7 @@ theme.MobileNav = (function() {
       .removeClass(classes.mobileNavOpenIcon);
 
     // close on escape
-    $(window).on('keyup.mobileNav', function(evt) {
+    $(window).on('keyup.mobileNav', function (evt) {
       if (evt.which === 27) {
         closeMobileNav();
       }
@@ -992,7 +992,7 @@ theme.MobileNav = (function() {
     });
     cache.$pageContainer.removeAttr('style');
 
-    cache.$mobileNavContainer.one('TransitionEnd.navToggle webkitTransitionEnd.navToggle transitionend.navToggle oTransitionEnd.navToggle', function() {
+    cache.$mobileNavContainer.one('TransitionEnd.navToggle webkitTransitionEnd.navToggle transitionend.navToggle oTransitionEnd.navToggle', function () {
       slate.a11y.removeTrapFocus({
         $container: cache.$mobileNav,
         namespace: 'navFocus'
@@ -1078,7 +1078,7 @@ theme.MobileNav = (function() {
     }
 
     // Focusing an item in the subnav early forces element into view and breaks the animation.
-    cache.$mobileNavContainer.one('TransitionEnd.subnavToggle webkitTransitionEnd.subnavToggle transitionend.subnavToggle oTransitionEnd.subnavToggle', function() {
+    cache.$mobileNavContainer.one('TransitionEnd.subnavToggle webkitTransitionEnd.subnavToggle transitionend.subnavToggle oTransitionEnd.subnavToggle', function () {
       slate.a11y.trapFocus({
         $container: $targetMenu,
         $elementToFocus: $elementToFocus,
@@ -1105,7 +1105,7 @@ theme.MobileNav = (function() {
 
 window.theme = window.theme || {};
 
-theme.Search = (function() {
+theme.Search = (function () {
   var selectors = {
     search: '.search',
     searchSubmit: '.search__submit',
@@ -1138,17 +1138,16 @@ theme.Search = (function() {
     initDrawer();
     searchSubmit();
 
-    $(selectors.searchHeaderInput).add(selectors.searchHeaderSubmit).on('focus blur', function() {
+    $(selectors.searchHeaderInput).add(selectors.searchHeaderSubmit).on('focus blur', function () {
       $(selectors.searchHeader).toggleClass(classes.focus);
     });
 
-    $(selectors.siteHeaderSearchToggle).on('click', function() {
+    $(selectors.siteHeaderSearchToggle).on('click', function () {
       var searchHeight = $(selectors.siteHeader).outerHeight();
-      var searchOffset = $(selectors.siteHeader).offset().top - searchHeight;
 
       $(selectors.searchDrawer).css({
         height: searchHeight + 'px',
-        top: searchOffset + 'px'
+        top: -searchHeight + 'px'
       });
     });
   }
@@ -1178,7 +1177,7 @@ theme.Search = (function() {
   }
 
   function searchSubmit() {
-    $(selectors.searchSubmit).on('click', function(evt) {
+    $(selectors.searchSubmit).on('click', function (evt) {
       var $el = $(evt.target);
       var $input = $el.parents(selectors.search).find(selectors.searchInput);
       if ($input.val().length === 0) {
@@ -1193,7 +1192,7 @@ theme.Search = (function() {
   };
 })();
 
-(function() {
+(function () {
   var selectors = {
     backButton: '.return-link'
   };
@@ -1204,7 +1203,7 @@ theme.Search = (function() {
     return;
   }
 
-  $backButton.one('click', function(evt) {
+  $backButton.one('click', function (evt) {
     evt.preventDefault();
 
     var referrerDomain = urlDomain(document.referrer);
@@ -1225,7 +1224,7 @@ theme.Search = (function() {
   }
 })();
 
-theme.Slideshow = (function() {
+theme.Slideshow = (function () {
   this.$slideshow = null;
   var classes = {
     wrapper: 'slideshow-wrapper',
@@ -1272,7 +1271,7 @@ theme.Slideshow = (function() {
 
     // When an element in the slider is focused
     // pause slideshow and set aria-live.
-    $wrapper.on('focusin', function(evt) {
+    $wrapper.on('focusin', function (evt) {
       if (!$wrapper.has(evt.target).length) {
         return;
       }
@@ -1285,7 +1284,7 @@ theme.Slideshow = (function() {
     });
 
     // Resume autoplay
-    $wrapper.on('focusout', function(evt) {
+    $wrapper.on('focusout', function (evt) {
       if (!$wrapper.has(evt.target).length) {
         return;
       }
@@ -1305,7 +1304,7 @@ theme.Slideshow = (function() {
 
     // Add arrow key support when focused
     if (obj.$dots) {
-      obj.$dots.on('keydown', function(evt) {
+      obj.$dots.on('keydown', function (evt) {
         if (evt.which === 37) {
           $slider.slick('slickPrev');
         }
@@ -1350,7 +1349,7 @@ theme.Slideshow = (function() {
     return $slide.find('.' + classes.video).length;
   }
 
-  slideshow.prototype.togglePause = function() {
+  slideshow.prototype.togglePause = function () {
     var slideshowSelector = getSlideshowId(this.$pause);
     if (this.$pause.hasClass(classes.isPaused)) {
       this.$pause.removeClass(classes.isPaused);
@@ -1374,7 +1373,7 @@ function onYouTubeIframeAPIReady() {
   theme.SlideshowVideo.loadVideos();
 }
 
-theme.SlideshowVideo = (function() {
+theme.SlideshowVideo = (function () {
   var autoplayCheckComplete = false;
   var autoplayAvailable = false;
   var playOnClickChecked = false;
@@ -1536,16 +1535,16 @@ theme.SlideshowVideo = (function() {
     player.playVideo();
 
     autoplayTest(player)
-      .then(function() {
+      .then(function () {
         setAutoplaySupport(true);
       })
-      .fail(function() {
+      .fail(function () {
         // No autoplay available (or took too long to start playing).
         // Show fallback image. Stop video for safety.
         setAutoplaySupport(false);
         player.stopVideo();
       })
-      .always(function() {
+      .always(function () {
         autoplayCheckComplete = true;
         $slide.removeClass(classes.loading);
       });
@@ -1556,7 +1555,7 @@ theme.SlideshowVideo = (function() {
     var wait;
     var timeout;
 
-    wait = setInterval(function() {
+    wait = setInterval(function () {
       if (player.getCurrentTime() <= 0) {
         return;
       }
@@ -1567,7 +1566,7 @@ theme.SlideshowVideo = (function() {
       deferred.resolve();
     }, 500);
 
-    timeout = setTimeout(function() {
+    timeout = setTimeout(function () {
       clearInterval(wait);
       deferred.reject();
     }, 4000); // subjective. test up to 8 times over 4 seconds
@@ -1758,7 +1757,7 @@ theme.SlideshowVideo = (function() {
     }
 
     // esc to close video player
-    $(document).on('keydown.videoPlayer', function(evt) {
+    $(document).on('keydown.videoPlayer', function (evt) {
       if (evt.keyCode === 27) {
         closeVideo(playerId);
       }
@@ -1766,7 +1765,7 @@ theme.SlideshowVideo = (function() {
   }
 
   function sizeBackgroundVideos() {
-    $('.' + classes.videoBackground).each(function(index, el) {
+    $('.' + classes.videoBackground).each(function (index, el) {
       sizeBackgroundVideo($(el));
     });
   }
@@ -1833,18 +1832,18 @@ theme.SlideshowVideo = (function() {
   }
 
   function initEvents() {
-    $(document).on('click.videoPlayer', '.' + classes.playVideoBtn, function(evt) {
+    $(document).on('click.videoPlayer', '.' + classes.playVideoBtn, function (evt) {
       var playerId = $(evt.currentTarget).data('controls');
       startVideoOnClick(playerId);
     });
 
-    $(document).on('click.videoPlayer', '.' + classes.closeVideoBtn, function(evt) {
+    $(document).on('click.videoPlayer', '.' + classes.closeVideoBtn, function (evt) {
       var playerId = $(evt.currentTarget).data('controls');
       closeVideo(playerId);
     });
 
     // Listen to resize to keep a background-size:cover-like layout
-    $(window).on('resize.videoPlayer', $.debounce(250, function() {
+    $(window).on('resize.videoPlayer', $.debounce(250, function () {
       if (youtubeLoaded) {
         sizeBackgroundVideos();
       }
@@ -1868,14 +1867,14 @@ theme.SlideshowVideo = (function() {
 
 
 /* ================ TEMPLATES ================ */
-(function() {
+(function () {
   var $filterBy = $('#BlogTagFilter');
 
   if (!$filterBy.length) {
     return;
   }
 
-  $filterBy.on('change', function() {
+  $filterBy.on('change', function () {
     location.href = $(this).val();
   });
 
@@ -1883,17 +1882,17 @@ theme.SlideshowVideo = (function() {
 
 window.theme = theme || {};
 
-theme.customerTemplates = (function() {
+theme.customerTemplates = (function () {
 
   function initEventListeners() {
     // Show reset password form
-    $('#RecoverPassword').on('click', function(evt) {
+    $('#RecoverPassword').on('click', function (evt) {
       evt.preventDefault();
       toggleRecoverPasswordForm();
     });
 
     // Hide reset password form
-    $('#HideRecoverPasswordLink').on('click', function(evt) {
+    $('#HideRecoverPasswordLink').on('click', function (evt) {
       evt.preventDefault();
       toggleRecoverPasswordForm();
     });
@@ -1947,7 +1946,7 @@ theme.customerTemplates = (function() {
     }
 
     // Initialize each edit form's country/province selector
-    $('.address-country-option').each(function() {
+    $('.address-country-option').each(function () {
       var formId = $(this).data('form-id');
       var countrySelector = 'AddressCountry_' + formId;
       var provinceSelector = 'AddressProvince_' + formId;
@@ -1960,23 +1959,23 @@ theme.customerTemplates = (function() {
     });
 
     // Toggle new/edit address forms
-    $('.address-new-toggle').on('click', function() {
+    $('.address-new-toggle').on('click', function () {
       $newAddressForm.toggleClass('hide');
     });
 
-    $('.address-edit-toggle').on('click', function() {
+    $('.address-edit-toggle').on('click', function () {
       var formId = $(this).data('form-id');
       $('#EditAddress_' + formId).toggleClass('hide');
     });
 
-    $('.address-delete').on('click', function() {
+    $('.address-delete').on('click', function () {
       var $el = $(this);
       var formId = $el.data('form-id');
       var confirmMessage = $el.data('confirm-message');
 
       // eslint-disable-next-line no-alert
       if (confirm(confirmMessage || 'Are you sure you wish to delete this address?')) {
-        Shopify.postLink('/account/addresses/' + formId, {parameters: {_method: 'delete'}});
+        Shopify.postLink('/account/addresses/' + formId, { parameters: { _method: 'delete' } });
       }
     });
   }
@@ -1996,7 +1995,7 @@ theme.customerTemplates = (function() {
   }
 
   return {
-    init: function() {
+    init: function () {
       checkUrlHash();
       initEventListeners();
       resetPasswordSuccess();
@@ -2011,7 +2010,7 @@ theme.customerTemplates = (function() {
 /*================ SECTIONS ================*/
 window.theme = window.theme || {};
 
-theme.Cart = (function() {
+theme.Cart = (function () {
   var selectors = {
     edit: '.js-edit-toggle'
   };
@@ -2033,11 +2032,11 @@ theme.Cart = (function() {
   }
 
   Cart.prototype = _.assignIn({}, Cart.prototype, {
-    onUnload: function() {
+    onUnload: function () {
       this.$edit.off('click', this._onEditClick);
     },
 
-    _onEditClick: function(evt) {
+    _onEditClick: function (evt) {
       var $evtTarget = $(evt.target);
       var $updateLine = $('.' + $evtTarget.data('target'));
 
@@ -2045,10 +2044,10 @@ theme.Cart = (function() {
       $updateLine.toggleClass(config.showClass);
     },
 
-    cookiesEnabled: function() {
+    cookiesEnabled: function () {
       var cookieEnabled = navigator.cookieEnabled;
 
-      if (!cookieEnabled){
+      if (!cookieEnabled) {
         document.cookie = 'testcookie';
         cookieEnabled = (document.cookie.indexOf('testcookie') !== -1);
       }
@@ -2061,7 +2060,7 @@ theme.Cart = (function() {
 
 window.theme = window.theme || {};
 
-theme.Filters = (function() {
+theme.Filters = (function () {
   var constants = {
     SORT_BY: 'sort_by'
   };
@@ -2087,7 +2086,7 @@ theme.Filters = (function() {
   }
 
   Filters.prototype = _.assignIn({}, Filters.prototype, {
-    _onSortChange: function(evt) {
+    _onSortChange: function (evt) {
       var sort = this._sortValue();
       if (sort.length) {
         window.location.search = sort;
@@ -2098,20 +2097,20 @@ theme.Filters = (function() {
       this._resizeSelect($(evt.target));
     },
 
-    _onFilterChange: function(evt) {
+    _onFilterChange: function (evt) {
       window.location.href = this.$filterSelect.val() + window.location.search;
       this._resizeSelect($(evt.target));
     },
 
-    _getSortValue: function() {
+    _getSortValue: function () {
       return this.$sortSelect.val() || this.defaultSort;
     },
 
-    _getDefaultSortValue: function() {
+    _getDefaultSortValue: function () {
       return $(selectors.defaultSort, this.$container).val();
     },
 
-    _sortValue: function() {
+    _sortValue: function () {
       var sort = this._getSortValue();
       var query = '';
 
@@ -2122,8 +2121,8 @@ theme.Filters = (function() {
       return query;
     },
 
-    _resizeSelect: function($selection) {
-      $selection.each(function() {
+    _resizeSelect: function ($selection) {
+      $selection.each(function () {
         var $this = $(this);
         var arrowWidth = 10;
         // create test element
@@ -2140,7 +2139,7 @@ theme.Filters = (function() {
       });
     },
 
-    onUnload: function() {
+    onUnload: function () {
       this.$filterSelect.off('change', this._onFilterChange);
       this.$sortSelect.off('change', this._onSortChange);
     }
@@ -2151,7 +2150,7 @@ theme.Filters = (function() {
 
 window.theme = window.theme || {};
 
-theme.HeaderSection = (function() {
+theme.HeaderSection = (function () {
 
   function Header() {
     theme.Header.init();
@@ -2160,7 +2159,7 @@ theme.HeaderSection = (function() {
   }
 
   Header.prototype = _.assignIn({}, Header.prototype, {
-    onUnload: function() {
+    onUnload: function () {
       theme.Header.unload();
     }
   });
@@ -2168,7 +2167,7 @@ theme.HeaderSection = (function() {
   return Header;
 })();
 
-theme.Maps = (function() {
+theme.Maps = (function () {
   var config = {
     zoom: 14
   };
@@ -2188,7 +2187,7 @@ theme.Maps = (function() {
         apiStatus = 'loading';
         if (typeof window.google === 'undefined') {
           $.getScript('https://maps.googleapis.com/maps/api/js?key=' + key)
-            .then(function() {
+            .then(function () {
               apiStatus = 'loaded';
               initAllMaps();
             });
@@ -2199,7 +2198,7 @@ theme.Maps = (function() {
 
   function initAllMaps() {
     // API has loaded, load all Map instances in queue
-    $.each(mapsToLoad, function(index, instance) {
+    $.each(mapsToLoad, function (index, instance) {
       instance.createMap();
     });
   }
@@ -2209,7 +2208,7 @@ theme.Maps = (function() {
     var geocoder = new google.maps.Geocoder();
     var address = $map.data('address-setting');
 
-    geocoder.geocode({address: address}, function(results, status) {
+    geocoder.geocode({ address: address }, function (results, status) {
       if (status !== google.maps.GeocoderStatus.OK) {
         deferred.reject(status);
       }
@@ -2221,11 +2220,11 @@ theme.Maps = (function() {
   }
 
   Map.prototype = _.assignIn({}, Map.prototype, {
-    createMap: function() {
+    createMap: function () {
       var $map = this.$container.find('.map-section__container');
 
       return geolocate($map)
-        .then(function(results) {
+        .then(function (results) {
           var mapOptions = {
             zoom: config.zoom,
             center: results[0].geometry.location,
@@ -2241,12 +2240,12 @@ theme.Maps = (function() {
             position: map.getCenter()
           });
 
-          google.maps.event.addDomListener(window, 'resize', $.debounce(250, function() {
+          google.maps.event.addDomListener(window, 'resize', $.debounce(250, function () {
             google.maps.event.trigger(map, 'resize');
             map.setCenter(center);
           }));
         }.bind(this))
-        .fail(function() {
+        .fail(function () {
           var errorMessage;
 
           switch (status) {
@@ -2268,7 +2267,7 @@ theme.Maps = (function() {
         });
     },
 
-    onUnload: function() {
+    onUnload: function () {
       google.maps.event.clearListeners(this.map, 'resize');
     }
   });
@@ -2287,7 +2286,7 @@ function gm_authFailure() {
 }
 
 /* eslint-disable no-new */
-theme.Product = (function() {
+theme.Product = (function () {
   function Product(container) {
     var $container = this.$container = $(container);
     var sectionId = $container.attr('data-section-id');
@@ -2339,16 +2338,16 @@ theme.Product = (function() {
   }
 
   Product.prototype = _.assignIn({}, Product.prototype, {
-    _stringOverrides: function() {
+    _stringOverrides: function () {
       theme.productStrings = theme.productStrings || {};
       $.extend(theme.strings, theme.productStrings);
     },
 
-    _initBreakpoints: function() {
+    _initBreakpoints: function () {
       var self = this;
 
       enquire.register(this.settings.mediaQuerySmall, {
-        match: function() {
+        match: function () {
           // initialize thumbnail slider on mobile if more than three thumbnails
           if ($(self.selectors.productThumbImages).length > 3) {
             self._initThumbnailSlider();
@@ -2356,14 +2355,14 @@ theme.Product = (function() {
 
           // destroy image zooming if enabled
           if (self.settings.zoomEnabled) {
-            $(self.selectors.productImageWraps).each(function( index ) {
+            $(self.selectors.productImageWraps).each(function (index) {
               _destroyZoom(this);
             });
           }
 
           self.settings.bpSmall = true;
         },
-        unmatch: function() {
+        unmatch: function () {
           if (self.settings.sliderActive) {
             self._destroyThumbnailSlider();
           }
@@ -2373,9 +2372,9 @@ theme.Product = (function() {
       });
 
       enquire.register(this.settings.mediaQueryMediumUp, {
-        match: function() {
+        match: function () {
           if (self.settings.zoomEnabled) {
-            $(self.selectors.productImageWraps).each(function( index ) {
+            $(self.selectors.productImageWraps).each(function (index) {
               _enableZoom(this);
             });
           }
@@ -2383,7 +2382,7 @@ theme.Product = (function() {
       });
     },
 
-    _initVariants: function() {
+    _initVariants: function () {
       var options = {
         $container: this.$container,
         enableHistoryState: this.$container.data('enable-history-state') || false,
@@ -2400,14 +2399,14 @@ theme.Product = (function() {
       this.$container.on('variantSKUChange' + this.settings.namespace, this._updateSKU.bind(this));
     },
 
-    _initImageSwitch: function() {
+    _initImageSwitch: function () {
       if (!$(this.selectors.productThumbImages).length) {
         return;
       }
 
       var self = this;
 
-      $(this.selectors.productThumbImages).on('click', function(evt) {
+      $(this.selectors.productThumbImages).on('click', function (evt) {
         evt.preventDefault();
         var $el = $(this);
 
@@ -2418,7 +2417,7 @@ theme.Product = (function() {
       });
     },
 
-    _setActiveThumbnail: function(imageId) {
+    _setActiveThumbnail: function (imageId) {
       var activeClass = 'active-thumb';
 
       // If there is no element passed, find it by the current product image
@@ -2431,7 +2430,7 @@ theme.Product = (function() {
       $thumbnail.addClass(activeClass);
     },
 
-    _switchImage: function(imageId) {
+    _switchImage: function (imageId) {
       var $newImage = $(this.selectors.productImageWraps + '[data-image-id=\'' + imageId + '\']');
       var $otherImages = $(this.selectors.productImageWraps + ':not([data-image-id=\'' + imageId + '\'])');
 
@@ -2439,7 +2438,7 @@ theme.Product = (function() {
       $otherImages.addClass('hide');
     },
 
-    _initThumbnailSlider: function() {
+    _initThumbnailSlider: function () {
       var options = {
         slidesToShow: 4,
         slidesToScroll: 3,
@@ -2460,12 +2459,12 @@ theme.Product = (function() {
       this.settings.sliderActive = true;
     },
 
-    _destroyThumbnailSlider: function() {
+    _destroyThumbnailSlider: function () {
       $(this.selectors.productThumbs).slick('unslick');
       this.settings.sliderActive = false;
     },
 
-    _updateAddToCart: function(evt) {
+    _updateAddToCart: function (evt) {
       var variant = evt.variant;
 
       if (variant) {
@@ -2491,7 +2490,7 @@ theme.Product = (function() {
       }
     },
 
-    _updateImages: function(evt) {
+    _updateImages: function (evt) {
       var variant = evt.variant;
       var imageId = variant.featured_image.id
 
@@ -2499,7 +2498,7 @@ theme.Product = (function() {
       this._setActiveThumbnail(imageId);
     },
 
-    _updatePrice: function(evt) {
+    _updatePrice: function (evt) {
       var variant = evt.variant;
 
       // Update the product price
@@ -2521,14 +2520,14 @@ theme.Product = (function() {
       }
     },
 
-    _updateSKU: function(evt) {
+    _updateSKU: function (evt) {
       var variant = evt.variant;
 
       // Update the sku
       $(this.selectors.SKU).html(variant.sku);
     },
 
-    onUnload: function() {
+    onUnload: function () {
       this.$container.off(this.settings.namespace);
     }
   });
@@ -2547,7 +2546,7 @@ theme.Product = (function() {
   return Product;
 })();
 
-theme.Quotes = (function() {
+theme.Quotes = (function () {
   var config = {
     mediaQuerySmall: 'screen and (max-width: 749px)',
     mediaQueryMediumUp: 'screen and (min-width: 750px)',
@@ -2588,13 +2587,13 @@ theme.Quotes = (function() {
     $slider.on('init', this.a11y.bind(this));
 
     enquire.register(config.mediaQuerySmall, {
-      match: function() {
+      match: function () {
         initSlider($slider, mobileOptions);
       }
     });
 
     enquire.register(config.mediaQueryMediumUp, {
-      match: function() {
+      match: function () {
         initSlider($slider, defaults);
       }
     });
@@ -2611,14 +2610,14 @@ theme.Quotes = (function() {
   }
 
   Quotes.prototype = _.assignIn({}, Quotes.prototype, {
-    onUnload: function() {
+    onUnload: function () {
       enquire.unregister(config.mediaQuerySmall);
       enquire.unregister(config.mediaQueryMediumUp);
 
       $(this.slider, this.wrapper).slick('unslick');
     },
 
-    onBlockSelect: function(evt) {
+    onBlockSelect: function (evt) {
       // Ignore the cloned version
       var $slide = $('.quotes-slide--' + evt.detail.blockId + ':not(.slick-cloned)');
       var slideIndex = $slide.data('slick-index');
@@ -2627,7 +2626,7 @@ theme.Quotes = (function() {
       $(this.slider, this.wrapper).slick('slickGoTo', slideIndex);
     },
 
-    a11y: function(event, obj) {
+    a11y: function (event, obj) {
       var $list = obj.$list;
       var $wrapper = $(this.wrapper, this.$container);
 
@@ -2635,14 +2634,14 @@ theme.Quotes = (function() {
       $list.removeAttr('aria-live');
 
       // When an element in the slider is focused set aria-live
-      $wrapper.on('focusin', function(evt) {
+      $wrapper.on('focusin', function (evt) {
         if ($wrapper.has(evt.target).length) {
           $list.attr('aria-live', 'polite');
         }
       });
 
       // Remove aria-live
-      $wrapper.on('focusout', function(evt) {
+      $wrapper.on('focusout', function (evt) {
         if ($wrapper.has(evt.target).length) {
           $list.removeAttr('aria-live');
         }
@@ -2655,13 +2654,13 @@ theme.Quotes = (function() {
 
 theme.slideshows = {};
 
-theme.SlideshowSection = (function() {
+theme.SlideshowSection = (function () {
   function SlideshowSection(container) {
     var $container = this.$container = $(container);
     var sectionId = $container.attr('data-section-id');
     var slideshow = this.slideshow = '#Slideshow-' + sectionId;
 
-    $('.slideshow__video', slideshow).each(function() {
+    $('.slideshow__video', slideshow).each(function () {
       var $el = $(this);
       theme.SlideshowVideo.init($el);
       theme.SlideshowVideo.loadVideo($el.attr('id'));
@@ -2674,11 +2673,11 @@ theme.SlideshowSection = (function() {
 })();
 
 theme.SlideshowSection.prototype = _.assignIn({}, theme.SlideshowSection.prototype, {
-  onUnload: function() {
+  onUnload: function () {
     delete theme.slideshows[this.slideshow];
   },
 
-  onBlockSelect: function(evt) {
+  onBlockSelect: function (evt) {
     var $slideshow = $(this.slideshow);
 
     // Ignore the cloned version
@@ -2689,14 +2688,14 @@ theme.SlideshowSection.prototype = _.assignIn({}, theme.SlideshowSection.prototy
     $slideshow.slick('slickGoTo', slideIndex).slick('slickPause');
   },
 
-  onBlockDeselect: function() {
+  onBlockDeselect: function () {
     // Resume autoplay
     $(this.slideshow).slick('slickPlay');
   }
 });
 
 
-$(document).ready(function() {
+$(document).ready(function () {
   var sections = new theme.Sections();
 
   sections.register('cart-template', theme.Cart);
@@ -2709,7 +2708,7 @@ $(document).ready(function() {
   sections.register('quotes', theme.Quotes);
 });
 
-theme.init = function() {
+theme.init = function () {
   theme.customerTemplates.init();
 
   slate.rte.wrapTable();
@@ -2718,11 +2717,11 @@ theme.init = function() {
   // Common a11y fixes
   slate.a11y.pageLinkFocus($(window.location.hash));
 
-  $('.in-page-link').on('click', function(evt) {
+  $('.in-page-link').on('click', function (evt) {
     slate.a11y.pageLinkFocus($(evt.currentTarget.hash));
   });
 
-  $('a[href="#"]').on('click', function(evt) {
+  $('a[href="#"]').on('click', function (evt) {
     evt.preventDefault();
   });
 

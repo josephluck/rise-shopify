@@ -1199,6 +1199,15 @@ $grid-breakpoints: (
 body,
 html {
   background-color: $color-body;
+  height: 100%;
+  min-height: 100%;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }
 
 .page-width {
@@ -1210,6 +1219,7 @@ html {
 .main-content {
   display: block;
   padding-top: $section-spacing-small;
+  flex: 1;
 
   @include media-query($medium-up) {
     padding-top: $section-spacing;
@@ -2364,6 +2374,11 @@ $dropdown-padding: 11px 17px;
   transition: $transition-drawer;
   position: relative;
   overflow: hidden;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 
   @include media-query($medium-up) {
     // Prevent mobile menu inline styles from overriding desktop styles
@@ -3623,7 +3638,7 @@ h1.product-single__title {
 .site-header {
   background-color: $color-menu-background;
   position: relative;
-  padding: 0 $gutter-site;
+  padding: 0;
 
   @include media-query($small) {
     border-bottom: 1px solid $color-border;
@@ -4078,6 +4093,11 @@ h1.product-single__title {
   border: 1px solid transparent;
 }
 
+.search-bar__close {
+  display: flex;
+  align-items: center;
+}
+
 @include media-query($small) {
   .search-bar__form {
     width: 100%;
@@ -4243,7 +4263,7 @@ $mobile-nav-button-padding: 15px;
 .mobile-nav__sublist-link {
   display: block;
   width: 100%;
-  padding: $mobile-nav-button-padding;
+  padding: $mobile-nav-button-padding $grid-gutter-mobile;
   font-size: $font-size-mobile-input;
 }
 
@@ -4344,6 +4364,8 @@ $mobile-nav-button-padding: 15px;
   display: none;
   overflow: hidden;
   width: 100%;
+  top: -40px; // Align with nav
+  background: white;
 
   &::after {
     content: '';
