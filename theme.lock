@@ -20,7 +20,7 @@ assets/theme.scss.liquid:
 assets/vendor.js:
   development: 2017-07-31T03:44:17-04:00   cb7c4217c9b6feb844647b361accfe6c
 config/settings_data.json:
-  development: 2017-08-28T09:52:45-04:00   943f0921322e327fede7d1783759bc73
+  development: 2017-08-28T12:52:36-04:00   a2f00f420cf15e2191cb8ade0f15c575
 config/settings_schema.json:
   development: 2017-07-31T03:48:53-04:00   39f92e1ee5e467e830e56088aa9893b4
 layout/gift_card.liquid:
@@ -55,6 +55,8 @@ sections/collection-template.liquid:
   development: 2017-07-31T03:44:16-04:00   3c635f9290cde0a0c41cc9372d63d298
 sections/collection.liquid:
   development: 2017-07-31T03:44:16-04:00   95d018d510180f9b5223083da1bd928c
+sections/contact.liquid:
+  development: 2017-08-28T10:52:31-04:00   04d4ba3322811a1359df09f86a4c69f8
 sections/custom-content.liquid:
   development: 2017-07-31T03:44:16-04:00   9abed1c1562136145fb81ea24137c7ac
 sections/feature-columns.liquid:
@@ -251,6 +253,8 @@ templates/list-collections.liquid:
   development: 2017-07-31T03:44:19-04:00   d42f6d6957169811896f646709d353d9
 templates/page.contact.liquid:
   development: 2017-08-28T12:30:55-04:00   228f3a6c567a10dee7284158401d29c0
+templates/page.contact2.liquid:
+  development: 2017-08-28T10:53:06-04:00   854f7fd02acf64bc9ce31bfd6994f791
 templates/page.liquid:
   development: 2017-07-31T03:44:19-04:00   26f97d3355078de5c6678ed3b34ad7f6
 templates/password.liquid:

@@ -178,7 +178,7 @@
             "type": "text",
             "settings": {
               "title": "",
-              "text": "<p>Rise Bakery is proud to be part of Providence Row.<\/p>\n<p>Providence Row tackles the root causes of homelessness to help people get off, and stay off, the streets.<\/p>",
+              "text": "<p>Rise Bakery is proud to be part of Providence Row. Providence Row tackles the root causes of homelessness to help people get off, and stay off, the streets.<\/p>",
               "width": "100%",
               "alignment": "center",
               "align_text": "center"
@@ -221,6 +221,13 @@
         "type": "cart-template",
         "settings": {
           "cart_notes_enable": true
+        }
+      },
+      "related-articles": {
+        "type": "related-articles",
+        "settings": {
+          "blog_show_author": false,
+          "blog_show_date": true
         }
       }
     },
