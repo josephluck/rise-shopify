@@ -20,9 +20,9 @@
     "type_base_family": "Google_Work+Sans_400_sans",
     "type_base_size": "18px",
     "type_bold_product_titles": false,
-    "share_facebook": false,
-    "share_twitter": false,
-    "share_pinterest": false,
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
     "social_twitter_link": "",
     "social_facebook_link": "",
     "social_pinterest_link": "",
@@ -33,7 +33,7 @@
     "social_vimeo_link": "",
     "favicon": "",
     "checkout_header_image": "",
-    "checkout_logo_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/rise_9bdafdc8-1e31-4e13-8b21-e2f4b55b240c.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "small",
     "checkout_body_background_image": "",
@@ -51,7 +51,7 @@
         "type": "header",
         "settings": {
           "align_logo": "left",
-          "logo": "",
+          "logo": "shopify:\/\/shop_images\/rise.png",
           "logo_max_width": "60",
           "main_linklist": "main-menu",
           "message": false,
@@ -145,8 +145,8 @@
         "type": "collection-template",
         "settings": {
           "layout": "grid",
-          "grid": "2",
-          "rows": "2",
+          "grid": "3",
+          "rows": "8",
           "show_collection_image": true,
           "show_vendor": false,
           "sort_enable": false,
@@ -183,10 +183,19 @@
               "alignment": "center",
               "align_text": "center"
             }
+          },
+          "1503928326002": {
+            "type": "video",
+            "settings": {
+              "video_url": "https:\/\/www.youtube.com\/watch?v=WBXN_sFL0RI",
+              "width": "100%",
+              "alignment": "top-middle"
+            }
           }
         },
         "block_order": [
-          "1492033924902-0"
+          "1492033924902-0",
+          "1503928326002"
         ],
         "settings": {
           "title": "Partner Charity"
@@ -196,14 +205,14 @@
         "type": "blog-template",
         "settings": {
           "layout": "grid",
-          "blog_show_author": true,
-          "blog_show_date": false
+          "blog_show_author": false,
+          "blog_show_date": true
         }
       },
       "article-template": {
         "type": "article-template",
         "settings": {
-          "blog_show_author": true,
+          "blog_show_author": false,
           "blog_show_date": true,
           "show_share_buttons": true
         }
