@@ -33,6 +33,20 @@
             </div>
           </div>
 
+          <label for="ContactFormRegarding">{{ 'contact.form.regarding' | t }}</label>
+          <select
+            id="ContactFormRegarding"
+            name="contact[regarding]"
+            value="{% if form[regarding] %}{{ form[regarding] }}{% elsif customer %}{{ customer.regarding }}{% endif %}"
+          >
+            <option value=""></option>
+            <option value="website-orders-customer-service">Website / Orders / Customer Service</option>
+            <option value="press">Press</option>
+            <option value="referrals">Referrals to our Training Scheme</option>
+            <option value="fundraising">Fundraising</option>
+            <option value="other">Something else</option>
+          </select>
+
           <label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
           <input type="tel" id="ContactFormPhone" name="contact[phone]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
 
